@@ -21,14 +21,6 @@ def parse(data_frame):
     print_log("[Packet]\t Got data of length " + str(data_len) + " and schema " + str(schema))
 
     if(wbschema.contains(schema)):
-        """
-        struct_fmt = wbschema.get_fmt()
-        headers = wbschema.get_headers()
-
-        values = struct.unpack(struct_fmt, data);
-        d = dict(zip(headers, values))
-        """
-
         unpack_fmt = wbschema.get_fmt(schema)
         headers = wbschema.get_headers(schema)
 
