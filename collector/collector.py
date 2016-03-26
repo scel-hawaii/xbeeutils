@@ -27,10 +27,16 @@ def parse(data_frame):
         print_log("[Message]\t We know about this packet.")
         print_log("[Message]\t Unpack format: " + unpack_fmt)
 
-        values = struct.unpack(unpack_fmt, data)
-        d = dict(zip(headers, values))
-        print_log("[Packet]\t End Packet")
-        print ""
+        # The data length may not match the expected schema length
+        expected_size = struct.calcsize(unpack_fmt)
+        if(expected_size == len(data)):
+            values = struct.unpack(unpack_fmt, data)
+            d = dict(zip(headers, values))
+            print_log("[Packet]\t End Packet")
+            print ""
+        else:
+            print_log("[ERROR] Data packet size does not match")
+            print ""
     else:
         print_log("[Warning]\t Unknown packet type detected")
         print_log("[Data]\t " + str(data))
