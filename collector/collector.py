@@ -15,14 +15,14 @@ def print_log(message):
 
 def parse(data_frame):
     data = data_frame['rf_data']
-    schema = struct.unpack('<H', data[0:2])[0]
+    schema_num = struct.unpack('<H', data[0:2])[0]
     data_len = len(data)
 
-    print_log("[Packet]\t Got data of length " + str(data_len) + " and schema " + str(schema))
+    print_log("[Packet]\t Got data of length " + str(data_len) + " and schema " + str(schema_num))
 
-    if(wbschema.contains(schema)):
-        unpack_fmt = wbschema.get_fmt(schema)
-        headers = wbschema.get_headers(schema)
+    if(wbschema.contains(schema_num)):
+        unpack_fmt = wbschema.get_fmt(schema_num)
+        headers = wbschema.get_headers(schema_num)
 
         print_log("[Message]\t We know about this packet.")
         print_log("[Message]\t Unpack format: " + unpack_fmt)
