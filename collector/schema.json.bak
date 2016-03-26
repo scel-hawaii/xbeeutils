@@ -1,42 +1,97 @@
-[
-    {
-        "name": "schema",
-        "size": "H",
-        "instance": 1
+{
+        "87":{
+        "description": "schema number used by jamie",
+        "format":[
+            {
+                "name": "schema",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "address",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "n",
+                "size": "B",
+                "instance": 1
+            },
+            {
+                "name": "bmp085_temp_decic",
+                "size": "h",
+                "instance": 1
+            },
+            {
+                "name": "humidity_centi_pct",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "apogee_w_m2",
+                "size": "H",
+                "instance": 10
+            },
+            {
+                "name": "uptime_ms",
+                "size": "I",
+                "instance": 1
+            },
+            {
+                "name": "bmp085_press_pa",
+                "size": "I",
+                "instance": 1
+            }
+        ]
     },
-    {
-        "name": "address",
-        "size": "H",
-        "instance": 1
-    },
-    {
-        "name": "n",
-        "size": "B",
-        "instance": 1
-    },
-    {
-        "name": "bmp085_temp_decic",
-        "size": "h",
-        "instance": 1
-    },
-    {
-        "name": "humidity_centi_pct",
-        "size": "H",
-        "instance": 1
-    },
-    {
-        "name": "apogee_w_m2",
-        "size": "H",
-        "instance": 10
-    },
-    {
-        "name": "uptime_ms",
-        "size": "I",
-        "instance": 1
-    },
-    {
-        "name": "bmp085_press_pa",
-        "size": "I",
-        "instance": 1
+    "97": {
+        "description": "apple",
+        "format":[
+            {
+                "name": "schema",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "address",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "uptime_ms",
+                "size": "I",
+                "instance": 1
+            },
+            {
+                "name": "batt_mv",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "panel_mv",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "bmp085_press_pa",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "bmp085_temp_decic",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "humidity_centi_pct",
+                "size": "H",
+                "instance": 1
+            },
+            {
+                "name": "apogee_w_m2;",
+                "size": "H",
+                "instance": 1
+            }
+        ]
     }
-]
+}
