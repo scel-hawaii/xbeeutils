@@ -7,6 +7,7 @@ import datetime
 import struct
 import wbschema
 import wbxbee
+import struct
 
 queue = []
 
@@ -30,8 +31,8 @@ def parse(data_frame):
         # The data length may not match the expected schema length
         expected_size = struct.calcsize(unpack_fmt)
         if(expected_size == len(data)):
-            values = struct.unpack(unpack_fmt, data)
-            d = dict(zip(headers, values))
+            d = wbschema.parse(unpack_fmt, data, headers)
+            print_log("[Data]\t " + str(d))
             print_log("[Packet]\t End Packet")
             print ""
         else:

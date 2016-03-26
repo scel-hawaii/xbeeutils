@@ -2,6 +2,7 @@
 import json
 import sys
 import pprint
+import struct
 
 schemas = {}
 schema_nums = []
@@ -66,6 +67,11 @@ def get_fmt(schema_num):
     global schema_nums
     s = str(schema_num)
     return schemas[s]['unpack_fmt']
+
+def parse(unpack_fmt, data, headers):
+    values = struct.unpack(unpack_fmt, data)
+    d = dict(zip(headers, values))
+    return d
 
 
 '''
