@@ -11,23 +11,38 @@ import wbxbee
 queue = []
 
 def print_log(message):
-    print datetime.datetime.now().time(), message
+    print "[" + str(datetime.datetime.now().time()) + "]", message
 
 def parse(data_frame):
     data = data_frame['rf_data']
-    # print 'Data length: ' + str(len(data))
     schema = struct.unpack('<H', data[0:2])[0]
+    data_len = len(data)
 
-    if(schema == 3):
+    print_log("[Packet]\t Got data of length " + str(data_len) + " and schema " + str(schema))
+
+    if(wbschema.contains(schema)):
+        """
         struct_fmt = wbschema.get_fmt()
         headers = wbschema.get_headers()
 
         values = struct.unpack(struct_fmt, data);
         d = dict(zip(headers, values))
+        """
+
+        unpack_fmt = wbschema.get_fmt(schema)
+        headers = wbschema.get_headers(schema)
+
+        print_log("[Message]\t We know about this packet.")
+        print_log("[Message]\t Unpack format: " + unpack_fmt)
+
+        values = struct.unpack(unpack_fmt, data)
+        d = dict(zip(headers, values))
+        print_log("[Packet]\t End Packet")
+        print ""
     else:
-        queue.append(data)
-        print_log("[Warning] Unknown packet type detected")
-        print_log("[Data] " + str(data))
+        print_log("[Warning]\t Unknown packet type detected")
+        print_log("[Data]\t " + str(data))
+        print ""
 
 def store_db(data):
     print_log("Storing Data")
