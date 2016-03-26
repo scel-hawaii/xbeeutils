@@ -1,20 +1,21 @@
 # schema.py
 import json
 import sys
+import pprint
 
 schemas = {}
 schema_nums = []
+pp = pprint.PrettyPrinter(indent=4)
 
 def load_schemas():
     global schemas
     global schema_nums
+    global pp
     with open('schema.json') as data_file:
         schemas = json.load(data_file)
         schema_nums = schemas.keys()
-    # print schemas
-    print schemas['97']
     schema_nums = schemas.keys()
-    print schemas.keys()
+    pp.pprint(schemas.keys())
 
     for s in schema_nums:
         unpack_fmt = '<'
@@ -81,5 +82,4 @@ def get_fmt(schema_num):
 
 if __name__ == '__main__':
     print "Finished loading schemas"
-    print schemas
 
