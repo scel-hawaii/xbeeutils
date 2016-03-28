@@ -1,9 +1,9 @@
 Helps you verify your xbee is sending the correct data.
-Make sure to copy config.json.bak to config.json before you start the program.
 
 # To run
+Make sure to copy config.json.bak to config.json before you start the program.
 
-`python xbee_296.py`
+Run: `python xbee_296.py`
 
 
 # Where to use this program
