@@ -3,6 +3,7 @@ import struct
 import json
 import serial
 import datetime
+import logging
 
 # Load configuration
 config = {}
@@ -44,4 +45,29 @@ while True:
     dlength = len(rf_data)
     timestamp = str(datetime.datetime.now())
 
-    print timestamp + " Data frame with length " + str(dlength) + " was received."
+    schema_num = struct.unpack('<H', rf_data[0:2])[0]
+
+    print timestamp + " Data frame with length " + str(dlength) + " bytes was received."
+
+    expected_len = 22
+    if( dlength != expected_len):
+        print "Recieved a packet with a wrong data length"
+        print "Expected: ", expected_len
+        print "Received : ", dlength
+        print "Make sure that your schema is correct in the firmware"
+        break
+
+    expected_schema = 296
+    if( schema_num != expected_schema):
+        print "Recieved a packet with a wrong schema number"
+        print "Expected: ", expected_schema
+        print "Received : ", schema_num
+        print "Make sure that you set your schema correctly."
+        break
+
+    udata = struct.unpack(unpack_fmt, rf_data)
+    print timestamp + " Data unpacked: " + str(udata)
+
+    pdata = dict(zip(headers, udata))
+    print timestamp + " Data processed: " + str(pdata)
+
